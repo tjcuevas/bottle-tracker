@@ -1,0 +1,13 @@
+{
+	"short_name": "Bottle Tracker",
+	"name": "Bottle Tracker",
+	"start_url": "/",
+	"display": "standalone",
+	"icons": [
+		{
+		  "src": "/src/images/bottle_144.svg",
+		  "type": "image/svg+xml",
+		  "sizes": "144x144"
+		}
+	]
+}
