@@ -12,7 +12,7 @@ const AddDrawer = ({ isOpen, onClose }: Props) => {
 	const addOuncesMutation = useAddOunces();
 	return (
 		<Drawer isOpen={isOpen} onClose={onClose} placement="top" isFullHeight>
-			<DrawerContent>
+			<DrawerContent height="-webkit-fill-available">
 					<DrawerCloseButton />
 				<DrawerHeader>Add</DrawerHeader>
 				<DrawerBody>

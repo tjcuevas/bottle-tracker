@@ -12,7 +12,7 @@ const RemoveDrawer = ({ isOpen, onClose }: Props) => {
 	const removeOuncesMutation = useRemoveOunces();
 	return (
 		<Drawer isOpen={isOpen} onClose={onClose} placement="top" isFullHeight>
-			<DrawerContent>
+			<DrawerContent height="-webkit-fill-available">
 					<DrawerCloseButton />
 				<DrawerHeader>Remove</DrawerHeader>
 				<DrawerBody>
