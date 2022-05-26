@@ -1,6 +1,6 @@
-import { Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper } from "@chakra-ui/react";
+import { Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, Flex, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper } from "@chakra-ui/react";
 import { useState } from "react";
-import { useAddOunces } from "./hooks/useOunces";
+import { useAddOunces, useRemoveOunces } from "./hooks/useOunces";
 
 interface Props {
 	isOpen: boolean;
@@ -12,23 +12,24 @@ const AddDrawer = ({ isOpen, onClose }: Props) => {
 	const addOuncesMutation = useAddOunces();
 	return (
 		<Drawer isOpen={isOpen} onClose={onClose} placement="top" isFullHeight>
-			<DrawerContent height="-webkit-fill-available">
-					<DrawerCloseButton />
-				<DrawerHeader>Add</DrawerHeader>
-				<DrawerBody>
-					<NumberInput value={ounces} onChange={(valueAsString, valueAsNumber) => setOunces(valueAsNumber)}>
+			<DrawerContent bg="pink.50">
+				<DrawerBody m="auto" width="50%">
+					<Flex height="100%" justifyContent="center" direction="column">
+					<NumberInput width="100%" mb="1rem" value={ounces} size="lg" onChange={(valueAsString, valueAsNumber) => setOunces(valueAsNumber)}>
 						<NumberInputField />
 						<NumberInputStepper>
 							<NumberIncrementStepper />
 							<NumberDecrementStepper />
 						</NumberInputStepper>
 					</NumberInput>
-				</DrawerBody>
-				<DrawerFooter>
-					<Button onClick={async () => {
+					<Button mb=".5rem" width="100%" colorScheme="purple" onClick={async () => {
 						await addOuncesMutation.mutateAsync(ounces);
 						onClose();
 					}}>Add</Button>
+					<Button width="100%" colorScheme="purple" variant="outline" onClick={onClose}>Cancel</Button>
+					</Flex>
+				</DrawerBody>
+				<DrawerFooter>
 				</DrawerFooter>
 			</DrawerContent>
 		</Drawer>
